@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PickleDetailView" customModule="Fermentor" customModuleProvider="target">
+            <connections>
+                <outlet property="pickleDatePicker" destination="YkX-tx-P7M" id="9fd-Xp-rOo"/>
+                <outlet property="pickleNameTextField" destination="paG-KR-all" id="BDj-lU-gQM"/>
+                <outlet property="usesVinegarSwitch" destination="aOL-Ld-e1q" id="JG8-kf-Ag7"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Z4b-Ky-Ni2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickle Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LR-dC-oCL">
+                    <rect key="frame" x="16" y="36" width="99" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="paG-KR-all">
+                    <rect key="frame" x="16" y="73" width="343" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="chK-9b-bNr"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-tx-P7M">
+                    <rect key="frame" x="0.0" y="286" width="375" height="216"/>
+                    <date key="date" timeIntervalSinceReferenceDate="548098664.56064498">
+                        <!--2018-05-15 17:37:44 +0000-->
+                    </date>
+                </datePicker>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickled On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWw-hf-hQN">
+                    <rect key="frame" x="16" y="249" width="85.5" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uses Vinegar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTU-ri-5hG">
+                    <rect key="frame" x="16" y="149" width="106.5" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOL-Ld-e1q">
+                    <rect key="frame" x="16" y="186" width="51" height="31"/>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="MTU-ri-5hG" firstAttribute="top" secondItem="paG-KR-all" secondAttribute="bottom" constant="32" id="1wg-o2-cd5"/>
+                <constraint firstItem="0LR-dC-oCL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="8QV-Ot-36k"/>
+                <constraint firstItem="aOL-Ld-e1q" firstAttribute="leading" secondItem="MTU-ri-5hG" secondAttribute="leading" id="HcM-Ah-L7e"/>
+                <constraint firstItem="paG-KR-all" firstAttribute="leading" secondItem="0LR-dC-oCL" secondAttribute="leading" id="ORu-D0-NL7"/>
+                <constraint firstItem="dWw-hf-hQN" firstAttribute="leading" secondItem="aOL-Ld-e1q" secondAttribute="leading" id="TsH-nJ-uzL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="paG-KR-all" secondAttribute="trailing" constant="16" id="XJA-oP-Gb9"/>
+                <constraint firstItem="dWw-hf-hQN" firstAttribute="top" secondItem="aOL-Ld-e1q" secondAttribute="bottom" constant="32" id="auQ-g8-m12"/>
+                <constraint firstItem="aOL-Ld-e1q" firstAttribute="top" secondItem="MTU-ri-5hG" secondAttribute="bottom" constant="16" id="cHk-Fq-6uD"/>
+                <constraint firstItem="0LR-dC-oCL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="iDM-yK-HHI"/>
+                <constraint firstItem="MTU-ri-5hG" firstAttribute="leading" secondItem="paG-KR-all" secondAttribute="leading" id="if4-pY-aOO"/>
+                <constraint firstItem="YkX-tx-P7M" firstAttribute="top" secondItem="dWw-hf-hQN" secondAttribute="bottom" constant="16" id="m43-RD-cyI"/>
+                <constraint firstItem="YkX-tx-P7M" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rsN-ok-WDS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YkX-tx-P7M" secondAttribute="trailing" id="t12-2B-aGO"/>
+                <constraint firstItem="paG-KR-all" firstAttribute="top" secondItem="0LR-dC-oCL" secondAttribute="bottom" constant="16" id="wPh-hg-jBR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

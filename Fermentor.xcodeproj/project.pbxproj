@@ -7,12 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32FCA306729B3E4519426F4A /* Pods_Fermentor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9DB70B9F11A59501463D7A /* Pods_Fermentor.framework */; };
+		4E4A1508C4B0F4618A37F7C3 /* Pods_FermentorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2743AA33A0538F2F6A4CA0A6 /* Pods_FermentorTests.framework */; };
+		DE1EBB3C20AB3A4800D06011 /* PickleListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */; };
+		DE1EBB3E20AB3A7900D06011 /* PickleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */; };
+		DE33E0C920AB4C14006B8CF0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0C820AB4C14006B8CF0 /* Context.swift */; };
+		DE33E0CB20AB4EFD006B8CF0 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */; };
+		DE33E0CE20AB51BA006B8CF0 /* PickleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */; };
+		DE33E0D120AB51EF006B8CF0 /* PickleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0D020AB51EF006B8CF0 /* PickleDetailView.swift */; };
+		DE33E0D320AB521F006B8CF0 /* PickleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */; };
+		DE88544520AB1DF500C2CA03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544420AB1DF500C2CA03 /* Coordinator.swift */; };
+		DE88544920AB24ED00C2CA03 /* Pickle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544820AB24ED00C2CA03 /* Pickle.swift */; };
+		DE88544B20AB372D00C2CA03 /* PickleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544A20AB372D00C2CA03 /* PickleService.swift */; };
 		DED3C61120AB18FC0002C760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3C61020AB18FC0002C760 /* AppDelegate.swift */; };
-		DED3C61320AB18FC0002C760 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3C61220AB18FC0002C760 /* ViewController.swift */; };
 		DED3C61620AB18FC0002C760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DED3C61420AB18FC0002C760 /* Main.storyboard */; };
 		DED3C61820AB18FC0002C760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DED3C61720AB18FC0002C760 /* Assets.xcassets */; };
 		DED3C61B20AB18FC0002C760 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DED3C61920AB18FC0002C760 /* LaunchScreen.storyboard */; };
 		DED3C62620AB18FC0002C760 /* FermentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3C62520AB18FC0002C760 /* FermentorTests.swift */; };
+		DED3C63620AB1AA20002C760 /* PickleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3C63520AB1AA20002C760 /* PickleListViewModel.swift */; };
+		DED3C63820AB1AED0002C760 /* PickleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3C63720AB1AED0002C760 /* PickleListView.swift */; };
+		DED3C63A20AB1B500002C760 /* PickleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED3C63920AB1B500002C760 /* PickleListView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +40,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16311F5D17A39532E9161E54 /* Pods-Fermentor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fermentor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fermentor/Pods-Fermentor.release.xcconfig"; sourceTree = "<group>"; };
+		2743AA33A0538F2F6A4CA0A6 /* Pods_FermentorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FermentorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2955EFC8CDF8E7A8F6E50B2D /* Pods-Fermentor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fermentor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fermentor/Pods-Fermentor.debug.xcconfig"; sourceTree = "<group>"; };
+		4AF38EEB3C09C1188FA5FF85 /* Pods-FermentorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FermentorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FermentorTests/Pods-FermentorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B9DB70B9F11A59501463D7A /* Pods_Fermentor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fermentor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleListItemView.xib; sourceTree = "<group>"; };
+		DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleListItemView.swift; sourceTree = "<group>"; };
+		DE33E0C820AB4C14006B8CF0 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleDetailViewModel.swift; sourceTree = "<group>"; };
+		DE33E0D020AB51EF006B8CF0 /* PickleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleDetailView.swift; sourceTree = "<group>"; };
+		DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleDetailView.xib; sourceTree = "<group>"; };
+		DE88544420AB1DF500C2CA03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DE88544820AB24ED00C2CA03 /* Pickle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickle.swift; sourceTree = "<group>"; };
+		DE88544A20AB372D00C2CA03 /* PickleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleService.swift; sourceTree = "<group>"; };
+		DEBB18618596C33F4038D9AE /* Pods-FermentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FermentorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FermentorTests/Pods-FermentorTests.release.xcconfig"; sourceTree = "<group>"; };
 		DED3C60D20AB18FC0002C760 /* Fermentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fermentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED3C61020AB18FC0002C760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DED3C61220AB18FC0002C760 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DED3C61520AB18FC0002C760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DED3C61720AB18FC0002C760 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DED3C61A20AB18FC0002C760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +65,9 @@
 		DED3C62120AB18FC0002C760 /* FermentorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FermentorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED3C62520AB18FC0002C760 /* FermentorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FermentorTests.swift; sourceTree = "<group>"; };
 		DED3C62720AB18FC0002C760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DED3C63520AB1AA20002C760 /* PickleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleListViewModel.swift; sourceTree = "<group>"; };
+		DED3C63720AB1AED0002C760 /* PickleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleListView.swift; sourceTree = "<group>"; };
+		DED3C63920AB1B500002C760 /* PickleListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleListView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FCA306729B3E4519426F4A /* Pods_Fermentor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,18 +83,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4A1508C4B0F4618A37F7C3 /* Pods_FermentorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03902E4D63ADD4580291BA05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2955EFC8CDF8E7A8F6E50B2D /* Pods-Fermentor.debug.xcconfig */,
+				16311F5D17A39532E9161E54 /* Pods-Fermentor.release.xcconfig */,
+				4AF38EEB3C09C1188FA5FF85 /* Pods-FermentorTests.debug.xcconfig */,
+				DEBB18618596C33F4038D9AE /* Pods-FermentorTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C2C5BA6D66E25123B85801C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B9DB70B9F11A59501463D7A /* Pods_Fermentor.framework */,
+				2743AA33A0538F2F6A4CA0A6 /* Pods_FermentorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE33E0CC20AB5183006B8CF0 /* Pickle Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */,
+				DE33E0CF20AB51D3006B8CF0 /* Components */,
+			);
+			path = "Pickle Detail";
+			sourceTree = "<group>";
+		};
+		DE33E0CF20AB51D3006B8CF0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DE33E0D020AB51EF006B8CF0 /* PickleDetailView.swift */,
+				DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		DED3C60420AB18FC0002C760 = {
 			isa = PBXGroup;
 			children = (
 				DED3C60F20AB18FC0002C760 /* Fermentor */,
 				DED3C62420AB18FC0002C760 /* FermentorTests */,
 				DED3C60E20AB18FC0002C760 /* Products */,
+				03902E4D63ADD4580291BA05 /* Pods */,
+				C2C5BA6D66E25123B85801C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,7 +152,12 @@
 			isa = PBXGroup;
 			children = (
 				DED3C61020AB18FC0002C760 /* AppDelegate.swift */,
-				DED3C61220AB18FC0002C760 /* ViewController.swift */,
+				DE88544420AB1DF500C2CA03 /* Coordinator.swift */,
+				DE33E0C820AB4C14006B8CF0 /* Context.swift */,
+				DED3C63320AB1A1F0002C760 /* Model */,
+				DED3C63420AB1A2C0002C760 /* Service */,
+				DED3C63020AB19CB0002C760 /* Pickle List  */,
+				DE33E0CC20AB5183006B8CF0 /* Pickle Detail */,
 				DED3C61420AB18FC0002C760 /* Main.storyboard */,
 				DED3C61720AB18FC0002C760 /* Assets.xcassets */,
 				DED3C61920AB18FC0002C760 /* LaunchScreen.storyboard */,
@@ -96,6 +175,43 @@
 			path = FermentorTests;
 			sourceTree = "<group>";
 		};
+		DED3C63020AB19CB0002C760 /* Pickle List  */ = {
+			isa = PBXGroup;
+			children = (
+				DED3C63520AB1AA20002C760 /* PickleListViewModel.swift */,
+				DED3C63120AB1A100002C760 /* Components */,
+			);
+			path = "Pickle List ";
+			sourceTree = "<group>";
+		};
+		DED3C63120AB1A100002C760 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DED3C63720AB1AED0002C760 /* PickleListView.swift */,
+				DED3C63920AB1B500002C760 /* PickleListView.xib */,
+				DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */,
+				DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DED3C63320AB1A1F0002C760 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE88544820AB24ED00C2CA03 /* Pickle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DED3C63420AB1A2C0002C760 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */,
+				DE88544A20AB372D00C2CA03 /* PickleService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DED3C62A20AB18FC0002C760 /* Build configuration list for PBXNativeTarget "Fermentor" */;
 			buildPhases = (
+				E9E6A327600E924154CC91A3 /* [CP] Check Pods Manifest.lock */,
 				DED3C60920AB18FC0002C760 /* Sources */,
 				DED3C60A20AB18FC0002C760 /* Frameworks */,
 				DED3C60B20AB18FC0002C760 /* Resources */,
+				7F33E017A4B97EEF099D8339 /* [CP] Embed Pods Frameworks */,
+				9FCDE04AF3936E090584651C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DED3C62D20AB18FC0002C760 /* Build configuration list for PBXNativeTarget "FermentorTests" */;
 			buildPhases = (
+				31F3F0FBE63C526E2565702A /* [CP] Check Pods Manifest.lock */,
 				DED3C61D20AB18FC0002C760 /* Sources */,
 				DED3C61E20AB18FC0002C760 /* Frameworks */,
 				DED3C61F20AB18FC0002C760 /* Resources */,
+				C5024A565C8CABB9B943F763 /* [CP] Embed Pods Frameworks */,
+				031629FC9EF8006A0E32827C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,6 +301,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1EBB3C20AB3A4800D06011 /* PickleListItemView.xib in Resources */,
+				DE33E0D320AB521F006B8CF0 /* PickleDetailView.xib in Resources */,
+				DED3C63A20AB1B500002C760 /* PickleListView.xib in Resources */,
 				DED3C61B20AB18FC0002C760 /* LaunchScreen.storyboard in Resources */,
 				DED3C61820AB18FC0002C760 /* Assets.xcassets in Resources */,
 				DED3C61620AB18FC0002C760 /* Main.storyboard in Resources */,
@@ -194,13 +319,115 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		031629FC9EF8006A0E32827C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FermentorTests/Pods-FermentorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31F3F0FBE63C526E2565702A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7F33E017A4B97EEF099D8339 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fermentor/Pods-Fermentor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FCDE04AF3936E090584651C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fermentor/Pods-Fermentor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5024A565C8CABB9B943F763 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FermentorTests/Pods-FermentorTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9E6A327600E924154CC91A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DED3C60920AB18FC0002C760 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DED3C61320AB18FC0002C760 /* ViewController.swift in Sources */,
+				DED3C63620AB1AA20002C760 /* PickleListViewModel.swift in Sources */,
+				DE33E0CE20AB51BA006B8CF0 /* PickleDetailViewModel.swift in Sources */,
+				DE33E0C920AB4C14006B8CF0 /* Context.swift in Sources */,
+				DE33E0D120AB51EF006B8CF0 /* PickleDetailView.swift in Sources */,
+				DED3C63820AB1AED0002C760 /* PickleListView.swift in Sources */,
+				DE88544520AB1DF500C2CA03 /* Coordinator.swift in Sources */,
+				DE88544920AB24ED00C2CA03 /* Pickle.swift in Sources */,
+				DE1EBB3E20AB3A7900D06011 /* PickleListItemView.swift in Sources */,
+				DE33E0CB20AB4EFD006B8CF0 /* Provider.swift in Sources */,
 				DED3C61120AB18FC0002C760 /* AppDelegate.swift in Sources */,
+				DE88544B20AB372D00C2CA03 /* PickleService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +578,7 @@
 		};
 		DED3C62B20AB18FC0002C760 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2955EFC8CDF8E7A8F6E50B2D /* Pods-Fermentor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -366,6 +594,7 @@
 		};
 		DED3C62C20AB18FC0002C760 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16311F5D17A39532E9161E54 /* Pods-Fermentor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,6 +610,7 @@
 		};
 		DED3C62E20AB18FC0002C760 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AF38EEB3C09C1188FA5FF85 /* Pods-FermentorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -398,6 +628,7 @@
 		};
 		DED3C62F20AB18FC0002C760 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEBB18618596C33F4038D9AE /* Pods-FermentorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
