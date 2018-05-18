@@ -11,11 +11,13 @@
 		4E4A1508C4B0F4618A37F7C3 /* Pods_FermentorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2743AA33A0538F2F6A4CA0A6 /* Pods_FermentorTests.framework */; };
 		DE1EBB3C20AB3A4800D06011 /* PickleListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */; };
 		DE1EBB3E20AB3A7900D06011 /* PickleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */; };
-		DE33E0C920AB4C14006B8CF0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0C820AB4C14006B8CF0 /* Context.swift */; };
+		DE33E0C920AB4C14006B8CF0 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0C820AB4C14006B8CF0 /* Workspace.swift */; };
 		DE33E0CB20AB4EFD006B8CF0 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */; };
 		DE33E0CE20AB51BA006B8CF0 /* PickleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */; };
 		DE33E0D120AB51EF006B8CF0 /* PickleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0D020AB51EF006B8CF0 /* PickleDetailView.swift */; };
 		DE33E0D320AB521F006B8CF0 /* PickleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */; };
+		DE33E0D820AD53F9006B8CF0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0D720AD53F9006B8CF0 /* String+Extensions.swift */; };
+		DE64CE5C20AF8EFE004224E6 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64CE5B20AF8EFE004224E6 /* Styles.swift */; };
 		DE88544520AB1DF500C2CA03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544420AB1DF500C2CA03 /* Coordinator.swift */; };
 		DE88544920AB24ED00C2CA03 /* Pickle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544820AB24ED00C2CA03 /* Pickle.swift */; };
 		DE88544B20AB372D00C2CA03 /* PickleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544A20AB372D00C2CA03 /* PickleService.swift */; };
@@ -47,11 +49,13 @@
 		8B9DB70B9F11A59501463D7A /* Pods_Fermentor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fermentor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleListItemView.xib; sourceTree = "<group>"; };
 		DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleListItemView.swift; sourceTree = "<group>"; };
-		DE33E0C820AB4C14006B8CF0 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		DE33E0C820AB4C14006B8CF0 /* Workspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
 		DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleDetailViewModel.swift; sourceTree = "<group>"; };
 		DE33E0D020AB51EF006B8CF0 /* PickleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleDetailView.swift; sourceTree = "<group>"; };
 		DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleDetailView.xib; sourceTree = "<group>"; };
+		DE33E0D720AD53F9006B8CF0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		DE64CE5B20AF8EFE004224E6 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		DE88544420AB1DF500C2CA03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DE88544820AB24ED00C2CA03 /* Pickle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickle.swift; sourceTree = "<group>"; };
 		DE88544A20AB372D00C2CA03 /* PickleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleService.swift; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		DE33E0D620AC5C6A006B8CF0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DE33E0D720AD53F9006B8CF0 /* String+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		DED3C60420AB18FC0002C760 = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +165,9 @@
 			children = (
 				DED3C61020AB18FC0002C760 /* AppDelegate.swift */,
 				DE88544420AB1DF500C2CA03 /* Coordinator.swift */,
-				DE33E0C820AB4C14006B8CF0 /* Context.swift */,
+				DE33E0C820AB4C14006B8CF0 /* Workspace.swift */,
+				DE64CE5B20AF8EFE004224E6 /* Styles.swift */,
+				DE33E0D620AC5C6A006B8CF0 /* Extension */,
 				DED3C63320AB1A1F0002C760 /* Model */,
 				DED3C63420AB1A2C0002C760 /* Service */,
 				DED3C63020AB19CB0002C760 /* Pickle List  */,
@@ -418,8 +432,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED3C63620AB1AA20002C760 /* PickleListViewModel.swift in Sources */,
+				DE33E0D820AD53F9006B8CF0 /* String+Extensions.swift in Sources */,
+				DE64CE5C20AF8EFE004224E6 /* Styles.swift in Sources */,
 				DE33E0CE20AB51BA006B8CF0 /* PickleDetailViewModel.swift in Sources */,
-				DE33E0C920AB4C14006B8CF0 /* Context.swift in Sources */,
+				DE33E0C920AB4C14006B8CF0 /* Workspace.swift in Sources */,
 				DE33E0D120AB51EF006B8CF0 /* PickleDetailView.swift in Sources */,
 				DED3C63820AB1AED0002C760 /* PickleListView.swift in Sources */,
 				DE88544520AB1DF500C2CA03 /* Coordinator.swift in Sources */,

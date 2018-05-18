@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Alamofire
+import SwiftyJSON
 
 protocol PickleProviding {
     
@@ -17,15 +19,18 @@ protocol PickleProviding {
 }
 
 final class PickleService : PickleProviding {
-
     func fetchPickes() -> Observable<ProviderEvent<[Pickle]>> {
         return Observable.create({ observer -> Disposable in
             observer.on(.next(.fetching))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-    
-                let mockPickle = Pickle(name: "A Mocked Pickle", pickledOn: Date(), usesVinegar: true)
-    
-                observer.on(.next(.completed([mockPickle])))
+            Alamofire.request("http://localhost:3000/api/pickles").responseJSON { response in
+                guard let result = response.result.value as? [Any] else {
+                    observer.on(.next(.error(ProviderError.invalidJSON)))
+                    return
+                }
+                let pickles = result
+                    .map({JSON($0)})
+                    .flatMap({Pickle(json:$0)})
+                observer.on(.next(.completed(pickles)))
             }
             return Disposables.create()
         })

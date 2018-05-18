@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum ProviderError: Swift.Error {
+    case invalidJSON
+}
+
 enum ProviderEvent<Item> {
     case fetching
     case error(Swift.Error)

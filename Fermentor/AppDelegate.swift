@@ -15,10 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        print("👨🏻‍🚀👩🏻‍🚀 App Launching 🚀")
+        
         let navigationController = self.window?.rootViewController as! UINavigationController
         
         let coordinator = Coordinator(navigationController: navigationController,
-                                      context: PickleJar())
+                                      workspace: Kitchen())
         
         coordinator.displayPickleList()
         

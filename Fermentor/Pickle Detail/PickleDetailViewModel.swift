@@ -7,21 +7,53 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 protocol PickleDetailModelable {
     
-    init(context: Context, pickle: Pickle)
+    var title: BehaviorRelay<String?> { get }
+    var pickNameTitle: BehaviorRelay<String?> { get }
+    var usesVinegarTitle: BehaviorRelay<String?> { get }
+    var usesVinegar: BehaviorRelay<Bool> { get }
     
+    init(workspace: Workspace, pickle: Pickle)
 }
 
 final class PickleDetailViewModel : PickleDetailModelable {
 
-    fileprivate let context: Context
+    private(set) var title:BehaviorRelay<String?> = BehaviorRelay(value: "")
+    private(set) var pickNameTitle:BehaviorRelay<String?> = BehaviorRelay(value: "Pickle Name")
+    private(set) var usesVinegarTitle:BehaviorRelay<String?> = BehaviorRelay(value: "Uses Vinegar (Yes)")
+    private(set) var usesVinegar = BehaviorRelay(value: false)
+
+    
+    fileprivate let workspace: Workspace
     fileprivate let pickle: Pickle
     
-    init(context: Context, pickle: Pickle) {
-        self.context = context
+    fileprivate let disposeBag = DisposeBag()
+
+    init(workspace: Workspace, pickle: Pickle) {
+        
+        self.workspace = workspace
         self.pickle = pickle
+        
+        title.accept(pickle.name.capitalized)
+        usesVinegar.accept(pickle.usesVinegar)
+        
+        usesVinegar
+            .asObservable()
+            .map({ "Uses Vinegar \($0 ? "(Yes)" : "(No)")"})
+            .bind(to: self.usesVinegarTitle)
+            .disposed(by: disposeBag)
+        
+        usesVinegar
+            .asObservable()
+            .map({ vinegar in
+                let replacing = vinegar ? ("ferment", "pickle") : ("pickle", "ferment")
+                return self.title.value?.lowercased().replacingOccurrences(of: replacing.0, with: replacing.1).capitalized ?? "" })
+            .bind(to: self.title)
+            .disposed(by: disposeBag)
     }
     
 }

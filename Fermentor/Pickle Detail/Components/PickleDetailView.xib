@@ -13,7 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PickleDetailView" customModule="Fermentor" customModuleProvider="target">
             <connections>
                 <outlet property="pickleDatePicker" destination="YkX-tx-P7M" id="9fd-Xp-rOo"/>
+                <outlet property="pickleNameLabel" destination="0LR-dC-oCL" id="6UU-vX-H52"/>
                 <outlet property="pickleNameTextField" destination="paG-KR-all" id="BDj-lU-gQM"/>
+                <outlet property="pickledOnLabel" destination="dWw-hf-hQN" id="x2y-qk-ezi"/>
+                <outlet property="usesVinegarLabel" destination="MTU-ri-5hG" id="5DC-yt-4OU"/>
                 <outlet property="usesVinegarSwitch" destination="aOL-Ld-e1q" id="JG8-kf-Ag7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Z4b-Ky-Ni2"/>
             </connections>
