@@ -11,6 +11,7 @@
 		4E4A1508C4B0F4618A37F7C3 /* Pods_FermentorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2743AA33A0538F2F6A4CA0A6 /* Pods_FermentorTests.framework */; };
 		DE1EBB3C20AB3A4800D06011 /* PickleListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */; };
 		DE1EBB3E20AB3A7900D06011 /* PickleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */; };
+		DE29251320B86D9C008B385D /* DisplayableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29251220B86D9C008B385D /* DisplayableError.swift */; };
 		DE33E0C920AB4C14006B8CF0 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0C820AB4C14006B8CF0 /* Workspace.swift */; };
 		DE33E0CB20AB4EFD006B8CF0 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */; };
 		DE33E0CE20AB51BA006B8CF0 /* PickleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */; };
@@ -18,9 +19,14 @@
 		DE33E0D320AB521F006B8CF0 /* PickleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */; };
 		DE33E0D820AD53F9006B8CF0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE33E0D720AD53F9006B8CF0 /* String+Extensions.swift */; };
 		DE64CE5C20AF8EFE004224E6 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64CE5B20AF8EFE004224E6 /* Styles.swift */; };
+		DE64CE5E20B2A8CF004224E6 /* PickleListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64CE5D20B2A8CF004224E6 /* PickleListStyle.swift */; };
+		DE64CE6020B5547E004224E6 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE64CE5F20B5547E004224E6 /* UIView+Extensions.swift */; };
 		DE88544520AB1DF500C2CA03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544420AB1DF500C2CA03 /* Coordinator.swift */; };
 		DE88544920AB24ED00C2CA03 /* Pickle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544820AB24ED00C2CA03 /* Pickle.swift */; };
 		DE88544B20AB372D00C2CA03 /* PickleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88544A20AB372D00C2CA03 /* PickleService.swift */; };
+		DED0F63420B82E61007D52F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F63320B82E61007D52F7 /* Constants.swift */; };
+		DED0F63620B8351A007D52F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DED0F63520B8351A007D52F7 /* Localizable.strings */; };
+		DED0F63920B85971007D52F7 /* PrettyLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F63820B85971007D52F7 /* PrettyLogger.swift */; };
 		DED3C61120AB18FC0002C760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3C61020AB18FC0002C760 /* AppDelegate.swift */; };
 		DED3C61620AB18FC0002C760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DED3C61420AB18FC0002C760 /* Main.storyboard */; };
 		DED3C61820AB18FC0002C760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DED3C61720AB18FC0002C760 /* Assets.xcassets */; };
@@ -49,6 +55,7 @@
 		8B9DB70B9F11A59501463D7A /* Pods_Fermentor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fermentor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1EBB3B20AB3A4800D06011 /* PickleListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleListItemView.xib; sourceTree = "<group>"; };
 		DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleListItemView.swift; sourceTree = "<group>"; };
+		DE29251220B86D9C008B385D /* DisplayableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableError.swift; sourceTree = "<group>"; };
 		DE33E0C820AB4C14006B8CF0 /* Workspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
 		DE33E0CA20AB4EFD006B8CF0 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		DE33E0CD20AB51BA006B8CF0 /* PickleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleDetailViewModel.swift; sourceTree = "<group>"; };
@@ -56,10 +63,15 @@
 		DE33E0D220AB521F006B8CF0 /* PickleDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickleDetailView.xib; sourceTree = "<group>"; };
 		DE33E0D720AD53F9006B8CF0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DE64CE5B20AF8EFE004224E6 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		DE64CE5D20B2A8CF004224E6 /* PickleListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleListStyle.swift; sourceTree = "<group>"; };
+		DE64CE5F20B5547E004224E6 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		DE88544420AB1DF500C2CA03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DE88544820AB24ED00C2CA03 /* Pickle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickle.swift; sourceTree = "<group>"; };
 		DE88544A20AB372D00C2CA03 /* PickleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleService.swift; sourceTree = "<group>"; };
 		DEBB18618596C33F4038D9AE /* Pods-FermentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FermentorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FermentorTests/Pods-FermentorTests.release.xcconfig"; sourceTree = "<group>"; };
+		DED0F63320B82E61007D52F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DED0F63520B8351A007D52F7 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		DED0F63820B85971007D52F7 /* PrettyLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyLogger.swift; sourceTree = "<group>"; };
 		DED3C60D20AB18FC0002C760 /* Fermentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fermentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED3C61020AB18FC0002C760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DED3C61520AB18FC0002C760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,6 +126,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DE29251120B86D71008B385D /* Shared Components */ = {
+			isa = PBXGroup;
+			children = (
+				DE29251220B86D9C008B385D /* DisplayableError.swift */,
+			);
+			path = "Shared Components";
+			sourceTree = "<group>";
+		};
 		DE33E0CC20AB5183006B8CF0 /* Pickle Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,8 +156,17 @@
 			isa = PBXGroup;
 			children = (
 				DE33E0D720AD53F9006B8CF0 /* String+Extensions.swift */,
+				DE64CE5F20B5547E004224E6 /* UIView+Extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DED0F63720B85962007D52F7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DED0F63820B85971007D52F7 /* PrettyLogger.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		DED3C60420AB18FC0002C760 = {
@@ -167,15 +196,19 @@
 				DE88544420AB1DF500C2CA03 /* Coordinator.swift */,
 				DE33E0C820AB4C14006B8CF0 /* Workspace.swift */,
 				DE64CE5B20AF8EFE004224E6 /* Styles.swift */,
+				DED0F63320B82E61007D52F7 /* Constants.swift */,
+				DED0F63720B85962007D52F7 /* Utilities */,
 				DE33E0D620AC5C6A006B8CF0 /* Extension */,
 				DED3C63320AB1A1F0002C760 /* Model */,
 				DED3C63420AB1A2C0002C760 /* Service */,
+				DE29251120B86D71008B385D /* Shared Components */,
 				DED3C63020AB19CB0002C760 /* Pickle List  */,
 				DE33E0CC20AB5183006B8CF0 /* Pickle Detail */,
 				DED3C61420AB18FC0002C760 /* Main.storyboard */,
 				DED3C61720AB18FC0002C760 /* Assets.xcassets */,
 				DED3C61920AB18FC0002C760 /* LaunchScreen.storyboard */,
 				DED3C61C20AB18FC0002C760 /* Info.plist */,
+				DED0F63520B8351A007D52F7 /* Localizable.strings */,
 			);
 			path = Fermentor;
 			sourceTree = "<group>";
@@ -201,6 +234,7 @@
 		DED3C63120AB1A100002C760 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DE64CE5D20B2A8CF004224E6 /* PickleListStyle.swift */,
 				DED3C63720AB1AED0002C760 /* PickleListView.swift */,
 				DED3C63920AB1B500002C760 /* PickleListView.xib */,
 				DE1EBB3D20AB3A7900D06011 /* PickleListItemView.swift */,
@@ -318,6 +352,7 @@
 				DE1EBB3C20AB3A4800D06011 /* PickleListItemView.xib in Resources */,
 				DE33E0D320AB521F006B8CF0 /* PickleDetailView.xib in Resources */,
 				DED3C63A20AB1B500002C760 /* PickleListView.xib in Resources */,
+				DED0F63620B8351A007D52F7 /* Localizable.strings in Resources */,
 				DED3C61B20AB18FC0002C760 /* LaunchScreen.storyboard in Resources */,
 				DED3C61820AB18FC0002C760 /* Assets.xcassets in Resources */,
 				DED3C61620AB18FC0002C760 /* Main.storyboard in Resources */,
@@ -432,16 +467,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED3C63620AB1AA20002C760 /* PickleListViewModel.swift in Sources */,
+				DED0F63920B85971007D52F7 /* PrettyLogger.swift in Sources */,
 				DE33E0D820AD53F9006B8CF0 /* String+Extensions.swift in Sources */,
 				DE64CE5C20AF8EFE004224E6 /* Styles.swift in Sources */,
 				DE33E0CE20AB51BA006B8CF0 /* PickleDetailViewModel.swift in Sources */,
 				DE33E0C920AB4C14006B8CF0 /* Workspace.swift in Sources */,
 				DE33E0D120AB51EF006B8CF0 /* PickleDetailView.swift in Sources */,
 				DED3C63820AB1AED0002C760 /* PickleListView.swift in Sources */,
+				DED0F63420B82E61007D52F7 /* Constants.swift in Sources */,
+				DE29251320B86D9C008B385D /* DisplayableError.swift in Sources */,
 				DE88544520AB1DF500C2CA03 /* Coordinator.swift in Sources */,
 				DE88544920AB24ED00C2CA03 /* Pickle.swift in Sources */,
+				DE64CE5E20B2A8CF004224E6 /* PickleListStyle.swift in Sources */,
 				DE1EBB3E20AB3A7900D06011 /* PickleListItemView.swift in Sources */,
 				DE33E0CB20AB4EFD006B8CF0 /* Provider.swift in Sources */,
+				DE64CE6020B5547E004224E6 /* UIView+Extensions.swift in Sources */,
 				DED3C61120AB18FC0002C760 /* AppDelegate.swift in Sources */,
 				DE88544B20AB372D00C2CA03 /* PickleService.swift in Sources */,
 			);

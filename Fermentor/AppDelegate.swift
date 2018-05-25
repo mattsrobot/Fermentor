@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        print("👨🏻‍🚀👩🏻‍🚀 App Launching 🚀")
+        Log.verbose("App Launching 👨🏻‍🚀👩🏻‍🚀🚀")
         
         let navigationController = self.window?.rootViewController as! UINavigationController
         
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                       workspace: Kitchen())
         
         coordinator.displayPickleList()
-        
+
         return true
     }
 

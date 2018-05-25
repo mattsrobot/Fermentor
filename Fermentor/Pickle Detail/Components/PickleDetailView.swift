@@ -13,11 +13,12 @@ protocol PickleDetailViewable {
     
     var view: UIView! { get }
     
-    init(viewModel: PickleDetailModelable)
+    init(viewModel: PickleDetailModelable, style: PickleListStyle)
 }
 
 fileprivate struct Constants {
     static let maxTitleLength = 15
+    static let colorFlipDuration = TimeInterval(1)
 }
 
 final class PickleDetailView : UIViewController, PickleDetailViewable {
@@ -28,13 +29,18 @@ final class PickleDetailView : UIViewController, PickleDetailViewable {
     @IBOutlet weak var pickleDatePicker: UIDatePicker?
     @IBOutlet weak var usesVinegarLabel: UILabel?
     @IBOutlet weak var usesVinegarSwitch: UISwitch?
+    @IBOutlet weak var sealedOnDatePicker: UIDatePicker!
+    @IBOutlet var editButton: UIBarButtonItem?
+    @IBOutlet var doneButton: UIBarButtonItem?
     
     fileprivate let disposeBag = DisposeBag()
 
     fileprivate let viewModel: PickleDetailModelable
+    fileprivate let style: PickleListStyle
     
-    init(viewModel: PickleDetailModelable) {
+    init(viewModel: PickleDetailModelable, style: PickleListStyle) {
         self.viewModel = viewModel
+        self.style = style
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,11 +48,38 @@ final class PickleDetailView : UIViewController, PickleDetailViewable {
         fatalError("use init(viewModel:,coordinator:)")
     }
     
+    fileprivate func setupViews() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = editButton
+    }
+    
     func bindTo(viewModel: PickleDetailModelable) {
         
-        guard let pickleNameLabel = pickleNameLabel, let pickleNameTextField = pickleNameTextField, let usesVinegarLabel = usesVinegarLabel, let usesVinegarSwitch = usesVinegarSwitch else {
+        guard let pickleNameLabel = pickleNameLabel,
+              let pickleNameTextField = pickleNameTextField,
+              let pickledOnLabel = pickledOnLabel,
+              let usesVinegarLabel = usesVinegarLabel,
+              let usesVinegarSwitch = usesVinegarSwitch,
+              let sealedOnDatePicker = sealedOnDatePicker,
+              let editButton = editButton,
+              let doneButton = doneButton else {
             return
         }
+        
+        viewModel.sealedOnTitle
+            .bind(to: pickledOnLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        var animated = false
+        style.listViewBackgroundColor
+            .subscribe(onNext: { color in
+                UIView.setLayersBackground([self.view.layer],
+                                           to: color.cgColor,
+                                           animated: animated,
+                                           duration: Constants.colorFlipDuration)
+                animated = true
+            })
+            .disposed(by: disposeBag)
         
         let title = viewModel.title.asObservable()
         
@@ -58,7 +91,6 @@ final class PickleDetailView : UIViewController, PickleDetailViewable {
              .disposed(by: disposeBag)
         
         pickleNameTextField.rx.text
-            .map({ $0?.capitalized })
             .bind(to: viewModel.title)
             .disposed(by: disposeBag)
         
@@ -80,14 +112,81 @@ final class PickleDetailView : UIViewController, PickleDetailViewable {
             .bind(to: usesVinegarSwitch.rx.isOn)
             .disposed(by: disposeBag)
         
+        usesVinegarSwitch.onTintColor = style.style.mediumYellow.value
+        
         usesVinegarSwitch.rx.isOn
             .bind(to: usesVinegar)
             .disposed(by: disposeBag)
         
+        viewModel.sealedOn
+            .bind(to: sealedOnDatePicker.rx.date)
+            .disposed(by: disposeBag)
+        
+        sealedOnDatePicker.rx.date
+            .bind(to: viewModel.sealedOn)
+            .disposed(by: disposeBag)
+        
+        viewModel.isEditing
+            .bind(to: pickleNameTextField.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.isEditing
+            .map({!$0})
+            .bind(to: pickleNameTextField.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.isEditing
+            .map({!$0})
+            .bind(to: sealedOnDatePicker.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.isEditing
+            .map({!$0})
+            .bind(to: usesVinegarSwitch.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+  
+        viewModel.isEditing
+            .map({ $0 ? [doneButton] : [editButton] })
+            .subscribe(onNext: { items in
+                self.navigationItem.setRightBarButtonItems(items, animated: true)
+            })
+            .disposed(by: disposeBag)
+    
+        editButton.rx.tap
+            .map({true})
+            .throttle(1, scheduler: MainScheduler.instance)
+            .bind(to: viewModel.isEditing)
+            .disposed(by: disposeBag)
+        
+        doneButton.rx.tap
+            .map({false})
+            .throttle(1, scheduler: MainScheduler.instance)
+            .bind(to: viewModel.isEditing)
+            .disposed(by: disposeBag)
+        
+        doneButton.rx.tap
+            .throttle(1, scheduler: MainScheduler.instance)
+            .subscribe(onNext: {
+                viewModel
+                    .update()?
+                    .subscribe(onNext: { (event) in
+                        switch event {
+                        case .completed:
+                            break
+                        case .error(_):
+                            break
+                        case .updating:
+                            break
+                        }
+                    })
+                    .disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         bindTo(viewModel: viewModel)
     }
 

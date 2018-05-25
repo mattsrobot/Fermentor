@@ -42,6 +42,8 @@ protocol PickleListModelable {
     var fetchPickles: Observable<PickleEvent> { get }
     /// The selected pickle index path
     var selectedPickle: BehaviorRelay<IndexPath?> { get }
+    /// Composes a pickle, returns a pickle compose event stream
+    var composePickle: Observable<PickleComposeEvent> { get }
     /// The initializer for PickleListModelable
     ///
     /// - Parameters:
@@ -53,8 +55,8 @@ protocol PickleListModelable {
 
 final class PickleListViewModel : PickleListModelable {
 
-    private(set) var title = BehaviorRelay(value: "Pickle List")
-    private(set) var emptyListText = BehaviorRelay(value: "You have no 🥒")
+    private(set) var title = BehaviorRelay(value: LocalizedStrings.PickleListScreen.Title.default)
+    private(set) var emptyListText = BehaviorRelay(value: LocalizedStrings.PickleListScreen.List.empty)
     private(set) var isRefreshing = BehaviorRelay(value: false)
     private(set) var pickles = BehaviorRelay(value: [PickleListItem]())
     private(set) var selectedPickle:BehaviorRelay<IndexPath?> = BehaviorRelay(value: nil)
@@ -64,20 +66,28 @@ final class PickleListViewModel : PickleListModelable {
     fileprivate let disposeBag = DisposeBag()
     
     var fetchPickles: Observable<PickleEvent> {
-        return service.fetchPickes().map { event -> PickleEvent in
-            switch event {
-            case .completed(let pickles):
-                self.isRefreshing.accept(false)
-                self.workspace.pickles.accept(pickles)
-                return .completed(pickles.count)
-            case .error(let error):
-                self.isRefreshing.accept(false)
-                return .error(error)
-            case .fetching:
-                self.isRefreshing.accept(true)
-                return .fetching
+        return service
+            .fetchPickes()
+            .map { event -> PickleEvent in
+                switch event {
+                case .completed(let pickles):
+                    self.isRefreshing.accept(false)
+                    self.workspace.pickles.accept(pickles)
+                    return .completed(pickles.count)
+                case .error(let error):
+                    self.isRefreshing.accept(false)
+                    self.coordinator.display(error: .network)
+                    return .error(error)
+                case .waiting:
+                    self.isRefreshing.accept(true)
+                    return .fetching
+                }
             }
-            }.asObservable()
+            .asObservable()
+    }
+    
+    var composePickle: Observable<PickleComposeEvent> {
+        return coordinator.composePickle
     }
     
     init(workspace: Workspace, coordinator: Coordinating, service: PickleProviding) {
@@ -85,12 +95,7 @@ final class PickleListViewModel : PickleListModelable {
         self.workspace = workspace
         self.coordinator = coordinator
         self.service = service
-        
-        isRefreshing
-            .map({ $0 ? "Refreshing" : "Pickle List" })
-            .bind(to: self.title)
-            .disposed(by: disposeBag)
-        
+                
         workspace.pickles
             .asObservable()
             .map({

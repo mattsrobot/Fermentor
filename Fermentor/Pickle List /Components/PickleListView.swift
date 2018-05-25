@@ -15,27 +15,28 @@ protocol PickleListViewable {
     var view: UIView! { get }
     var collectionView: UICollectionView? { get }
     
-    init(viewModel: PickleListModelable)
+    init(viewModel: PickleListModelable, style: PickleListStyle)
     
     func bindTo(viewModel: PickleListModelable)
 }
 
 fileprivate struct Constants {
     static let itemIdentifier = String(describing: PickleListItemView.self)
-    static let rowHeight = CGFloat(100)
+    static let colorFlipDuration = TimeInterval(1)
 }
 
 final class PickleListView : UIViewController, PickleListViewable {
 
     @IBOutlet weak var collectionView: UICollectionView?
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView?
-    @IBOutlet weak var emptyListLabel: UILabel!
-    
+    @IBOutlet weak var emptyListLabel: UILabel?
     fileprivate let viewModel: PickleListModelable
+    fileprivate let style: PickleListStyle
     fileprivate let disposeBag = DisposeBag()
     
-    init(viewModel: PickleListModelable) {
+    init(viewModel: PickleListModelable, style: PickleListStyle) {
         self.viewModel = viewModel
+        self.style = style
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,8 +46,30 @@ final class PickleListView : UIViewController, PickleListViewable {
     
     func bindTo(viewModel: PickleListModelable) {
         
+        guard let collectionView = collectionView,
+              let emptyListLabel = emptyListLabel,
+              let activityIndicatorView = activityIndicatorView else {
+            return
+        }
+                
+        var animated = false
+        style.listViewBackgroundColor
+            .subscribe(onNext: { color in
+                UIView.setLayersBackground([self.view.layer, collectionView.layer],
+                                           to: color.cgColor,
+                                           animated: animated,
+                                           duration: Constants.colorFlipDuration)
+                animated = true
+            })
+            .disposed(by: disposeBag)
+        
+        style.listViewBackgroundColor
+            .bind(to: (collectionView as UIView).rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
         viewModel.title
             .asObservable()
+            .throttle(1, scheduler: MainScheduler.instance)
             .bind(to: navigationItem.rx.title)
             .disposed(by: disposeBag)
         
@@ -57,35 +80,64 @@ final class PickleListView : UIViewController, PickleListViewable {
         
         viewModel.isRefreshing
             .asObservable()
-            .bind(to: activityIndicatorView!.rx.isAnimating)
+            .throttle(1, scheduler: MainScheduler.instance)
+            .bind(to: activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
         
         let pickles = viewModel.pickles.asObservable()
         
         pickles
             .map({ $0.count > 0 })
-            .bind(to: self.emptyListLabel.rx.isHidden)
+            .bind(to: emptyListLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         pickles
-            .bind(to: collectionView!.rx.items) { (collectionView, row, element) in
+            .bind(to: collectionView.rx.items) { (collectionView, row, element) in
                 let indexPath = IndexPath(row: row, section: 0)
-                let cell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: Constants.itemIdentifier,
-                                                                    for: indexPath) as! PickleListItemView
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.itemIdentifier,
+                                                              for: indexPath) as! PickleListItemView
                 cell.configure(with: element)
                 return cell
             }
             .disposed(by: disposeBag)
         
-        collectionView!.rx.itemSelected.asObservable()
+        collectionView.rx.itemSelected
+            .asObservable()
             .bind(to: viewModel.selectedPickle)
             .disposed(by: disposeBag)
         
     }
     
+    fileprivate func setupToolbar() {
+        
+        let viewModel = self.viewModel
+        let disposeBag = self.disposeBag
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let composeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
+        
+//        composeButton.rx.tap.subscribe(onNext: {
+//            viewModel
+//                .composePickle
+//                .subscribe(onNext: { event in
+//                    switch event {
+//                    case .composing:
+//                        break
+//                        case .
+//                    }
+//                })
+//                .disposed(by: disposeBag)
+//        }).disposed(by: disposeBag)
+        
+        setToolbarItems([flexibleSpace,composeButton],
+                        animated: true)
+        
+        navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
     fileprivate func setupViews() {
-        collectionView?.delegate = self
         collectionView?.registerPickleViews()
+        setupToolbar()
     }
     
     fileprivate func fetchPickles() {
@@ -94,11 +146,11 @@ final class PickleListView : UIViewController, PickleListViewable {
             .subscribe(onNext: { event in
                 switch event {
                 case .fetching:
-                    print("Fetching pickles, have a ☕")
+                    Log.debug("Fetching pickles, have a ☕")
                 case .completed(let count):
-                    print("Got \(count) pickles 🥒🥒🥒")
-                case .error(_):
-                    print("🔥 Encountered an error fetching pickles 🔥")
+                    Log.debug("Got \(count) pickles 🥒🥒🥒")
+                case .error(let error):
+                    Log.failure("Encountered an error fetching pickles")
                 }
             })
             .disposed(by: disposeBag)
@@ -111,8 +163,8 @@ final class PickleListView : UIViewController, PickleListViewable {
         bindTo(viewModel: viewModel)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchPickles()
     }
 
@@ -130,7 +182,7 @@ fileprivate extension UICollectionView {
 extension PickleListView : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: Constants.rowHeight)
+        return CGSize(width: collectionView.frame.width, height: style.itemHeight)
     }
     
 }

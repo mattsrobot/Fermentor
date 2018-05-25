@@ -13,7 +13,7 @@ enum ProviderError: Swift.Error {
 }
 
 enum ProviderEvent<Item> {
-    case fetching
+    case waiting
     case error(Swift.Error)
     case completed(Item)
 }

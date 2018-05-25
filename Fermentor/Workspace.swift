@@ -17,13 +17,13 @@ protocol Workspace {
     var pickles: BehaviorRelay<[Pickle]> { get }
     
     /// The current style to use for colors
-    var style: BehaviorRelay<Stylable> { get }
+    var style: Stylable { get }
 }
 
 /// The Kitchen is a concreate class implementing Workspace
-final class Kitchen : Workspace {
+struct Kitchen : Workspace {
     
-    private(set) var pickles = BehaviorRelay(value: [Pickle]())
-    private(set) var style: BehaviorRelay<Stylable> = BehaviorRelay(value: GreenPickleTheme())
+    var pickles = BehaviorRelay(value: [Pickle]())
+    var style: Stylable = PickleTheme()
     
 }

@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
+enum PickleComposeEvent {
+    case composing
+    case cancelled
+    case completed
+}
 
 /// Coordinating confirming classes will aid navigation of the app to different screens
 protocol Coordinating {
@@ -22,8 +30,10 @@ protocol Coordinating {
     /// Pops up an alert displaying an error
     ///
     /// - Parameter error: the error to display
-    func display(error: Swift.Error)
+    func display(error: DisplayableError)
     
+    /// Composes a pickle, returns a pickle compose event stream
+    var composePickle: Observable<PickleComposeEvent> { get }
 }
 
 final class Coordinator : Coordinating {
@@ -31,35 +41,67 @@ final class Coordinator : Coordinating {
     fileprivate let workspace: Workspace
     fileprivate let navigationController: UINavigationController
     
+    var composePickle: Observable<PickleComposeEvent> {
+        return Observable.create({ observer in
+            
+            
+            return Disposables.create()
+        })
+    }
+    
+    
     init(navigationController: UINavigationController, workspace: Workspace) {
         self.navigationController = navigationController
         self.workspace = workspace
     }
     
     func displayPickleList() {
-        print("Navigating to Pickle List 🥒🥒🥒")
+        Log.debug("Navigating to Pickle List 🥒🥒🥒")
         let viewModel = PickleListViewModel(workspace: workspace,
                                             coordinator: self,
                                             service: PickleService())
         
-        let pickelLet = PickleListView(viewModel: viewModel)
+        let style = PickleListStyle(workspace: workspace)
+        
+        let pickelLet = PickleListView(viewModel: viewModel, style: style)
         
         navigationController.setViewControllers([pickelLet], animated: false)
     }
 
     func display(pickle: Pickle) {
-        print("Navigating to a Pickle 🥒")
+        Log.debug("Navigating to a Pickle 🥒")
         let viewModel = PickleDetailViewModel(workspace: workspace,
-                                              pickle: pickle)
+                                              pickle: pickle,
+                                              coordinator: self,
+                                              service: PickleService())
         
-        let pickeDetail = PickleDetailView(viewModel: viewModel)
+        let style = PickleListStyle(workspace: workspace)
+        
+        let pickeDetail = PickleDetailView(viewModel: viewModel, style: style)
         
         navigationController.pushViewController(pickeDetail, animated: true)
     }
     
-    func display(error: Error) {
-        print("🔔 Displaying an error alert 🔔")
+    fileprivate func display(banner: DisplayableError) {
         
+    }
+    
+    fileprivate func display(alert: DisplayableError) {
+        let alert = UIAlertController(title: alert.title,
+                                      message: alert.subtitle,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        navigationController.present(alert, animated: true, completion: nil)
+    }
+    
+    func display(error: DisplayableError) {
+        Log.debug("Displaying an error alert 🔔")
+        switch error.type {
+        case .alert:
+            display(alert: error)
+        case .banner:
+            display(banner: error)
+        }
     }
     
 }

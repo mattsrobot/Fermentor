@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Fermentor
+
+  Created by Matthew Wilkinson on 25/5/18.
+  Copyright © 2018 Matthew Wilkinson. All rights reserved.
+*/
+
+// MARK: - Date Formats
+"dateformats.long" = "dd/MM/yyyy";
+
+// MARK: - Errors
+"unknown.error.network.connection.title" = "Service Unreachable";
+"unknown.error.network.connection.description" = "There was a problem connecting to the pickle service.";
+
+// MARK: - Pickle List
+"pickle.list.title.default" = "🥒 List";
+"pickle.list.empty" = "Your list is empty.";
