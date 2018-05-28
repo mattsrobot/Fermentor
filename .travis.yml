@@ -1,3 +1,4 @@
 language: objective-c
 osx_image: xcode9.2
-script: xcodebuild test -workspace Fermentor.xcworkspace -scheme FermentorTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+xcode_project: Fermentor.xcodeproj
+xcode_scheme: FermentorTests
