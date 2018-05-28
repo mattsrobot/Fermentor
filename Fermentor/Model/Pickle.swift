@@ -18,7 +18,7 @@ struct Pickle {
     
     fileprivate static var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = ParsingStrings.dateFormat
         return dateFormatter
     }
     

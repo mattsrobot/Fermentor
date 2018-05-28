@@ -107,9 +107,7 @@ final class PickleListViewModel : PickleListModelable {
         self.service = service
         
         workspace.pickles.asObservable()
-            .map({ $0.sorted(by: { (lhs, rhs) in
-                return lhs.pickledOn > rhs.pickledOn
-            })})
+            .map({ $0.sorted(by: { $0.pickledOn > $1.pickledOn })})
             .bind(to: self.sortedPickles)
             .disposed(by: disposeBag)
 
