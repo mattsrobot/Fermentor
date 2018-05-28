@@ -3,65 +3,49 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
+	<dict/>
+	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>64D4BEE67ADBDBC9C9829D7EB1734075</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>Pods-Fermentor.xcscheme</key>
+		<key>8111F413DD08E4FE80C8A0F2D5A32179</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>Pods-FermentorTests.xcscheme</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>RxBlocking.xcscheme</key>
+		<key>99441AF65405A6D9EC9CADCC282F9150</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>RxCocoa.xcscheme</key>
+		<key>B928F8540A97C80FB5EAD3B12DAB5B4B</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>RxSwift.xcscheme</key>
+		<key>D00DB0020990252FFA2805F4FD914C5E</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>RxTest.xcscheme</key>
+		<key>D756A270DE0222D019EBC7C86A5D8782</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>DC506EDA87D5E9733183F1DCC9AA75B0</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict/>
 </dict>
 </plist>
