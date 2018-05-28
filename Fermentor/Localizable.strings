@@ -16,3 +16,14 @@
 // MARK: - Pickle List
 "pickle.list.title.default" = "🥒 List";
 "pickle.list.empty" = "Your list is empty.";
+"pickle.list.item.pickled" = "Pickled";
+"pickle.list.item.fermented" = "Fermented";
+"pickle.list.item.days.sealed" = "%d days";
+
+
+// MARK: - Pickle Detail
+"pickle.detail.seal.default" = "Sealed on %@";
+"pickle.detail.seal.update" = "Sealed on";
+"pickle.detail.uses.vinegar.title.fermented" = "Fermented";
+"pickle.detail.uses.vinegar.title.pickled" = "Pickled with vinegar";
+"pickle.detail.pickle.name.title" = "Name";

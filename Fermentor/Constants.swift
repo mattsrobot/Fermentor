@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate struct Constants {
+    static let secondsInADay = Double(86400)
+}
+
 enum ConfigurationStrings {
     static let host = "http://localhost:3000"
 }
@@ -36,21 +40,40 @@ enum LocalizedStrings {
         enum List {
             static let empty = NSLocalizedString("pickle.list.empty")
         }
+        
+        enum Item {
+            static let pickled = NSLocalizedString("pickle.list.item.pickled")
+            static let fermented = NSLocalizedString("pickle.list.item.fermented")
+            
+            static func daysSealed(with date: Date) -> String {
+                let days = Int(floor(date.timeIntervalSince(Date()) / Constants.secondsInADay)) * -1
+                let format = NSLocalizedString("pickle.list.item.days.sealed")
+                return String(format: format, days)
+            }
+        }
     }
 
     enum PickleDetailScreen {
         
         enum Seal {
             
-            static let editing = NSLocalizedString("pickle.detail.seal.editing")
+            static let update = NSLocalizedString("pickle.detail.seal.update")
             
             static func `default`(with date: Date) -> String {
                 let formatter = DateFormatter()
                 formatter.dateFormat =  NSLocalizedString("dateformats.long")
-                let format = NSLocalizedString("pickle.detail.seal.editing")
+                let format = NSLocalizedString("pickle.detail.seal.default")
                 return String(format: format, formatter.string(from: date))
             }
-            
+        }
+        
+        enum PickleName {
+           static let title = NSLocalizedString("pickle.detail.pickle.name.title")
+        }
+        
+        enum UsesVinegarTitle {
+            static let fermented = NSLocalizedString("pickle.detail.uses.vinegar.title.fermented")
+            static let pickled = NSLocalizedString("pickle.detail.uses.vinegar.title.pickled")
         }
     }
 

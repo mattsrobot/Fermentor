@@ -12,9 +12,18 @@ import RxCocoa
 
 /// A view model describing a pickle to be displayed in a list view
 struct PickleListItem {
+    
     var title: String
     var subtitle: String
     var detail: String
+    
+    init(pickle: Pickle) {
+        title = pickle.name
+        subtitle = pickle.usesVinegar ? LocalizedStrings.PickleListScreen.Item.pickled :
+                                        LocalizedStrings.PickleListScreen.Item.fermented
+        detail = LocalizedStrings.PickleListScreen.Item.daysSealed(with: pickle.pickledOn)
+    }
+    
 }
 
 /// An event associated to the pickle list
@@ -37,7 +46,7 @@ protocol PickleListModelable {
     /// If the list is refreshing
     var isRefreshing: BehaviorRelay<Bool> { get }
     /// A list of pickle view models
-    var pickles: BehaviorRelay<[PickleListItem]> { get }
+    var pickleListItems: BehaviorRelay<[PickleListItem]> { get }
     /// Fetches pickles, returns a pickle event stream
     var fetchPickles: Observable<PickleEvent> { get }
     /// The selected pickle index path
@@ -58,12 +67,13 @@ final class PickleListViewModel : PickleListModelable {
     private(set) var title = BehaviorRelay(value: LocalizedStrings.PickleListScreen.Title.default)
     private(set) var emptyListText = BehaviorRelay(value: LocalizedStrings.PickleListScreen.List.empty)
     private(set) var isRefreshing = BehaviorRelay(value: false)
-    private(set) var pickles = BehaviorRelay(value: [PickleListItem]())
+    private(set) var pickleListItems = BehaviorRelay(value: [PickleListItem]())
     private(set) var selectedPickle:BehaviorRelay<IndexPath?> = BehaviorRelay(value: nil)
     fileprivate let workspace: Workspace
     fileprivate let coordinator: Coordinating
     fileprivate let service: PickleProviding
     fileprivate let disposeBag = DisposeBag()
+    fileprivate var sortedPickles = BehaviorRelay(value: [Pickle]())
     
     var fetchPickles: Observable<PickleEvent> {
         return service
@@ -95,23 +105,28 @@ final class PickleListViewModel : PickleListModelable {
         self.workspace = workspace
         self.coordinator = coordinator
         self.service = service
-                
-        workspace.pickles
+        
+        workspace.pickles.asObservable()
+            .map({ $0.sorted(by: { (lhs, rhs) in
+                return lhs.pickledOn > rhs.pickledOn
+            })})
+            .bind(to: self.sortedPickles)
+            .disposed(by: disposeBag)
+
+        sortedPickles
             .asObservable()
-            .map({
-                $0.map({PickleListItem(title: $0.name,
-                                       subtitle: $0.usesVinegar ? "Uses Vinegar" : "Fermented",
-                                       detail: "")})})
-            .bind(to: self.pickles)
+            .map({$0.map( {PickleListItem(pickle: $0)})})
+            .bind(to: self.pickleListItems)
             .disposed(by: disposeBag)
         
         selectedPickle
             .asObservable()
-            .subscribe(onNext: { selectedPickle in
-                guard let selectedPickle = selectedPickle else {
+            .subscribe(onNext: { selectedPickleIndex in
+                guard let selectedPickleIndex = selectedPickleIndex else {
                     return
                 }
-                self.coordinator.display(pickle: self.workspace.pickles.value[selectedPickle.row])
+                let pickle = self.sortedPickles.value[selectedPickleIndex.row]
+                self.coordinator.display(pickle: pickle)
             })
             .disposed(by: disposeBag)
     }

@@ -84,7 +84,7 @@ final class PickleListView : UIViewController, PickleListViewable {
             .bind(to: activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
         
-        let pickles = viewModel.pickles.asObservable()
+        let pickles = viewModel.pickleListItems.asObservable()
         
         pickles
             .map({ $0.count > 0 })
@@ -116,18 +116,14 @@ final class PickleListView : UIViewController, PickleListViewable {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let composeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
         
-//        composeButton.rx.tap.subscribe(onNext: {
-//            viewModel
-//                .composePickle
-//                .subscribe(onNext: { event in
-//                    switch event {
-//                    case .composing:
-//                        break
-//                        case .
-//                    }
-//                })
-//                .disposed(by: disposeBag)
-//        }).disposed(by: disposeBag)
+        composeButton.rx.tap.subscribe(onNext: {
+            viewModel
+                .composePickle
+                .subscribe(onNext: { event in
+                    
+                })
+                .disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
         
         setToolbarItems([flexibleSpace,composeButton],
                         animated: true)
@@ -149,7 +145,7 @@ final class PickleListView : UIViewController, PickleListViewable {
                     Log.debug("Fetching pickles, have a ☕")
                 case .completed(let count):
                     Log.debug("Got \(count) pickles 🥒🥒🥒")
-                case .error(let error):
+                case .error(_):
                     Log.failure("Encountered an error fetching pickles")
                 }
             })

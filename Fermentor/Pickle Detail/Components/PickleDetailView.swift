@@ -126,43 +126,52 @@ final class PickleDetailView : UIViewController, PickleDetailViewable {
             .bind(to: viewModel.sealedOn)
             .disposed(by: disposeBag)
         
-        viewModel.isEditing
+        viewModel.mode
+            .map({ $0.isEditing })
             .bind(to: pickleNameTextField.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        viewModel.isEditing
-            .map({!$0})
+        viewModel.mode
+            .map({ !$0.isEditing })
             .bind(to: pickleNameTextField.rx.isHidden)
             .disposed(by: disposeBag)
         
-        viewModel.isEditing
-            .map({!$0})
+        viewModel.mode
+            .map({ !$0.isEditing })
             .bind(to: sealedOnDatePicker.rx.isHidden)
             .disposed(by: disposeBag)
         
-        viewModel.isEditing
-            .map({!$0})
+        viewModel.mode
+            .map({ !$0.isEditing })
             .bind(to: usesVinegarSwitch.rx.isHidden)
             .disposed(by: disposeBag)
         
-  
-        viewModel.isEditing
-            .map({ $0 ? [doneButton] : [editButton] })
+        viewModel.mode
+            .map({ mode in
+                switch mode {
+                case .compose:
+                    return []
+                case .read:
+                    return [editButton]
+                case .update:
+                    return [doneButton]
+                }
+            })
             .subscribe(onNext: { items in
                 self.navigationItem.setRightBarButtonItems(items, animated: true)
             })
             .disposed(by: disposeBag)
-    
+
         editButton.rx.tap
-            .map({true})
+            .map({PickleDetailMode.update})
             .throttle(1, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.isEditing)
+            .bind(to: viewModel.mode)
             .disposed(by: disposeBag)
         
         doneButton.rx.tap
-            .map({false})
+            .map({PickleDetailMode.read})
             .throttle(1, scheduler: MainScheduler.instance)
-            .bind(to: viewModel.isEditing)
+            .bind(to: viewModel.mode)
             .disposed(by: disposeBag)
         
         doneButton.rx.tap

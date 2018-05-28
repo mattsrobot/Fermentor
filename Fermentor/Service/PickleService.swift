@@ -21,7 +21,6 @@ protocol PickleProviding {
 
 final class PickleService : PickleProviding {
     
-    
     func update(pickle: Pickle) -> Observable<ProviderEvent<Pickle>> {
         return Observable.create({ observer -> Disposable in
             observer.on(.next(.waiting))

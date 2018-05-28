@@ -57,7 +57,8 @@
             </constraints>
             <size key="customSize" width="365" height="197"/>
             <connections>
-                <outlet property="detailLabel" destination="P9a-gy-SOt" id="9kV-44-Ue0"/>
+                <outlet property="detailLabel" destination="EJ8-wF-AwE" id="hak-DM-GDk"/>
+                <outlet property="subtitle" destination="P9a-gy-SOt" id="Sfe-go-ZMD"/>
                 <outlet property="textLabel" destination="Z69-6x-SIf" id="tYE-jb-hHC"/>
             </connections>
             <point key="canvasLocation" x="16.5" y="97.5"/>

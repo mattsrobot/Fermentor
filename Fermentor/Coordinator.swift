@@ -42,13 +42,26 @@ final class Coordinator : Coordinating {
     fileprivate let navigationController: UINavigationController
     
     var composePickle: Observable<PickleComposeEvent> {
+        Log.debug("Navigating to composing a Pickle 🥒")
+
+        let pickle =  Pickle(id: -1, name: "", pickledOn: Date(), usesVinegar: true)
+
+        let viewModel = PickleDetailViewModel(workspace: workspace,
+                                              pickle: pickle,
+                                              coordinator: self,
+                                              service: PickleService(),
+                                              mode: .compose)
+        
+        let style = PickleListStyle(workspace: workspace)
+        
+        let pickeDetail = PickleDetailView(viewModel: viewModel, style: style)
+        
+        navigationController.pushViewController(pickeDetail, animated: true)
+        
         return Observable.create({ observer in
-            
-            
             return Disposables.create()
         })
     }
-    
     
     init(navigationController: UINavigationController, workspace: Workspace) {
         self.navigationController = navigationController
@@ -73,7 +86,8 @@ final class Coordinator : Coordinating {
         let viewModel = PickleDetailViewModel(workspace: workspace,
                                               pickle: pickle,
                                               coordinator: self,
-                                              service: PickleService())
+                                              service: PickleService(),
+                                              mode: .read)
         
         let style = PickleListStyle(workspace: workspace)
         
